@@ -1,4 +1,4 @@
-package com.example.alquranflutter
+package com.ars.alquranflutter
 
 import io.flutter.embedding.android.FlutterActivity
 
