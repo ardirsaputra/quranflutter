@@ -29,13 +29,14 @@ class _MainPageState extends State<MainPage> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: DoubleBackToCloseApp(
         snackBar: const SnackBar(
-            content: Text('Ketuk lagi untuk keluar'),
-          ),
+          content: Text('Ketuk lagi untuk keluar'),
+        ),
         child: Stack(
           children: [
             Container(),
@@ -54,9 +55,9 @@ class _MainPageState extends State<MainPage> {
                         });
                       },
                       children: [
-                        ComingSoonPage(nama:"Fitur Favorit"),
+                        ComingSoonPage(nama: "Fitur Favorit"),
                         DashboardPage(),
-                        ComingSoonPage(nama:"Fitur Jadwal Sholat"),
+                        JadwalSholatPage(),
                       ],
                     ),
                   ),

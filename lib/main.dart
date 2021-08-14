@@ -11,9 +11,9 @@ void main() async {
   // Set Statusbar Default
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: mainColor,
-    statusBarColor: Colors.white, // status bar color
-    statusBarBrightness: Brightness.dark, //status bar brigtness
-    statusBarIconBrightness: Brightness.dark, //status barIcon Brightness
+    statusBarColor: mainColor, // status bar color
+    statusBarBrightness: Brightness.light, //status bar brigtness
+    statusBarIconBrightness: Brightness.light, //status barIcon Brightness
   ));
   await Hive.initFlutter();
   runApp(MyApp());

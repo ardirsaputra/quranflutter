@@ -2,18 +2,20 @@ part of 'widgets.dart';
 
 class CardSurat extends StatelessWidget {
   final Surat surat;
+
   CardSurat(this.surat);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(5),
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: mainColor)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), color: Colors.white, border: Border.all(color: mainColor)),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
         splashColor: mainColor,
         onTap: () {
-          Get.to(()=>SuratPage(surat: surat));
+          Get.to(() => SuratPage(surat: surat));
         },
         child: Container(
           width: double.infinity,

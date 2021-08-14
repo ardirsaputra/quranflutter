@@ -8,15 +8,16 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   List<Surat> surat = [];
   bool isOffline = false;
-
+  Box box;
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _getDataSurat();
     });
   }
 
+  
   Future<void> _getDataSurat() async {
-    print('=========Masuk Ke GetDataSurat ================');
+    print('=========Masuk Ke Get DataSurat ================');
     final String getData = await rootBundle.loadString('assets/surat.json');
     final jsonData = await json.decode(getData);
     print(surat.length.toString());
@@ -52,16 +53,29 @@ class _DashboardPageState extends State<DashboardPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Al Quran Digital", style: blackFontStyle2),
+                              Text("Quran Digital", style: blackFontStyle2),
                             ],
                           ),
-                          Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                            ),
-                            child: SizedBox(width: double.infinity, child: logoApp),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: SizedBox(width: double.infinity, child: logoApp),
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.to(() => PreferenceMenuPage());
+                                    },
+                                    child: Icon(Icons.more_vert),
+                                  )),
+                            ],
                           ),
                         ],
                       ),
@@ -69,43 +83,41 @@ class _DashboardPageState extends State<DashboardPage> {
                   ],
                 ),
                 // Card,
-               Container(
-                    color: Colors.white,
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height - 140,
-                    child: ListView(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(10),
-                          color: Colors.white,
-                          child: Column(
-                            children: [
-                              // Container(
-                              //     padding: EdgeInsets.only(top: 10),
-                              //     child: Text("Surat", style: blackFontStyle3)),
-                              SizedBox(
-                                height: 16,
-                              ),
-                              Builder(builder: (_) {
-                                List<Widget> listWidget = [];
-                                if (surat.length > 0) {
-                                  listWidget = surat.map((e) => CardSurat(e)).toList();
-                                } else {
-                                  listWidget = [
-                                   SizedBox()
-                                  ];
-                                }
-                                return Column(
-                                  children: listWidget.map((e) => e).toList(),
-                                );
-                              }),
-                              SizedBox()
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+                Container(
+                  color: Colors.white,
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height - 140,
+                  child: ListView(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            // Container(
+                            //     padding: EdgeInsets.only(top: 10),
+                            //     child: Text("Surat", style: blackFontStyle3)),
+                            SizedBox(
+                              height: 16,
+                            ),
+                            Builder(builder: (_) {
+                              List<Widget> listWidget = [];
+                              if (surat.length > 0) {
+                                listWidget = surat.map((e) => CardSurat(e)).toList();
+                              } else {
+                                listWidget = [SizedBox()];
+                              }
+                              return Column(
+                                children: listWidget.map((e) => e).toList(),
+                              );
+                            }),
+                            SizedBox()
+                          ],
+                        ),
+                      )
+                    ],
                   ),
+                ),
               ],
             ),
           ),

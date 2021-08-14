@@ -1,8 +1,13 @@
 part of 'widgets.dart';
 
-class CardAyat extends StatelessWidget {
+class CardAyat extends StatefulWidget {
   final Ayat ayat;
   CardAyat(this.ayat);
+  @override
+  _CardAyatState createState() => _CardAyatState();
+}
+
+class _CardAyatState extends State<CardAyat> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,29 +25,30 @@ class CardAyat extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                Container(
+               Container(
                 height: 30,
-                margin: EdgeInsets.fromLTRB(20, 10, 20, 4),
+                margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(40)),
                   color: mainColor,
                 ),
                 child: Column(children: [
-                  Text(ayat.nomor.toString(), style: blackFontStyle2),
+                  Text(widget.ayat.nomor.toString(), style: blackFontStyle2),
                 ]),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.fromLTRB(defaultMargin, 0, defaultMargin,10),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(ayat.ar, style: blackFontStyle1,textAlign: TextAlign.right),
-                      Text("Artinya :", style: greyFontStyle3),
-                      Text(ayat.id, style: blackFontStyle3),
+                      Preference.arab == 1 ? Text(widget.ayat.ar, style: blackFontStyle1,textAlign: TextAlign.right):SizedBox(),
+                      Preference.tartil == 1 ? Text(removeAllHtmlTags(widget.ayat.tr), style: blackFontStyle3):SizedBox(),
+                      Preference.indo == 1 ? Text("Artinya :", style: greyFontStyle3): SizedBox(),
+                      Preference.indo == 1 ? Text(widget.ayat.id, style: blackFontStyle3):SizedBox(),
                     ]),
-              )
+              ) 
             ],
           ),
         ),

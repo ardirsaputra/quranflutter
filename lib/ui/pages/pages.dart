@@ -9,11 +9,17 @@ import 'package:alquranflutter/models/models.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:permission_handler/permission_handler.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
+import 'package:path_provider/path_provider.dart';
 import 'dart:convert';
+import 'package:location/location.dart';
 
 part 'splash_page.dart';
 part 'dashboard_page.dart';
 part 'main_page.dart';
 part 'comingsoon_page.dart';
 part 'surat_page.dart';
+part 'preference_menu_page.dart';
+part 'jadwal_sholat_page.dart';
+part 'versi_page.dart';
